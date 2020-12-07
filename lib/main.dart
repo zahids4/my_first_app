@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'CarouselPaywall.dart';
+import 'package:bloc/bloc.dart';
+import 'paywall_button_observer.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Bloc.observer = PaywallButtonObserver();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +15,13 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to Flutter'),
+          backgroundColor: Colors.white,
+          title: Text(
+            'Flutter Demo by Saim',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
         ),
         body: CarouselPaywall(),
       ),

@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'paywall_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CarouselPaywall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final randomWord = WordPair.random().asUpperCase;
-
-    return Center(
-      child: Text(randomWord),
+    return BlocProvider(
+      create: (_) => PaywallCubit(),
+      child: Container(
+          color: Colors.black,
+          child: Center(
+              child: Column(children: [
+            SizedBox(height: 10),
+            Image(
+                image: AssetImage('images/logo.png'), width: 100, height: 100),
+            SizedBox(height: 10),
+            Text(
+              "7 day free trial",
+              style: TextStyle(
+                  color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold),
+            )
+          ]))),
     );
   }
 }
